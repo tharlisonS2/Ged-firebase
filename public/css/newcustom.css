@@ -1,0 +1,178 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background: #D2E1E1 ;
+}
+.menu{
+justify-content: space-between;
+align-items: center;
+
+}
+#logo{
+color: white;
+margin: 0;
+padding:0.75rem;
+}
+#logonav{
+display: flex;
+}
+.upload{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+align-content: center;
+}
+.navl{
+width:12rem;
+max-width:12rem;
+min-width:12rem;
+}
+.alt{
+height: 94.4%;
+}
+.navform{
+display: flex;
+}
+.my-container {
+display: flex;
+justify-content: center;
+align-content: center;
+align-items: center;
+height: 100%;
+}
+
+.my-dropdown {
+display: flex;
+justify-content: center;
+align-content: center;
+align-items: center;
+border-radius: 30px;
+}
+
+.dropdown__item {
+align-self: center;
+margin-left: .5em !important; /*damn you bootstrap!*/ 
+}
+
+.circle {
+width: 25px;
+height: 25px;
+border-radius: 50%;
+display: inline-block;
+}
+
+ul[role="tree"] {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 120%;
+  }
+  
+  [role="treeitem"].doc::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f15c";
+    display: inline-block;
+    padding-right: 2px;
+    padding-left: 5px;
+    vertical-align: middle;
+  }
+  
+  [role="treeitem"][aria-expanded="false"] > ul {
+    display: none;
+  }
+  
+  [role="treeitem"][aria-expanded="true"] > ul {
+    display: block;
+  }
+  
+  [role="treeitem"][aria-expanded="false"] > span::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f07b";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+  }
+  
+  [role="treeitem"][aria-expanded="true"] > span::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f07c";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+  }
+  
+  [role="treeitem"],
+  [role="treeitem"] span {
+    width: 9em;
+    margin: 0;
+    padding: 0.125em;
+    border: 2px transparent solid;
+    display: block;
+  }
+  
+  /* disable default keyboard focus styling for treeitems
+     Keyboard focus is styled with the following CSS */
+  [role="treeitem"]:focus {
+    outline: 0;
+  }
+  
+  [role="treeitem"].focus,
+  [role="treeitem"] span.focus {
+    border-color: black;
+    background-color: #eee;
+  }
+  
+  [role="treeitem"].hover,
+  [role="treeitem"] span:hover {
+    background-color: #ddd;
+  }
+  .iconet{
+    width: 50px;
+    height: 32px;
+  }
+  .flexconteudoi{
+    flex-direction: column;
+    justify-content: center;
+  }
+  .wid{
+    width:99%;
+  }
+  .caminho{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #797979;
+    text-align: left;
+  }
+  .acao-icon{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caminho-nav:hover{
+    background-color: #323539;
+    transition: background-color 250ms;
+    transition-timing-function: linear;
+  }
+  .caminho-nav:active{
+    background-color: #3e008f;
+    transition: background-color 0ms;
+    transition-timing-function: linear;
+  }
+  .caminho-nav-select{
+    background-color: #000000;
+  }
+  .hover-nome:hover{
+    background-color: #323539;
+  }
+  body{
+    background-color: rgb(215, 209, 221);
+  }

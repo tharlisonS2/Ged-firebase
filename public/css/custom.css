@@ -1,0 +1,899 @@
+    * {
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            
+        }
+        /*backglround-color: rgb(37, 37, 39);*/
+        .treediv{
+          max-width: 80%;
+        }
+        ul, #myUL {
+          list-style-type: none;
+        }
+        
+        #myUL {
+          margin: 0;
+          padding: 0;
+        }
+        
+        .caret {
+          cursor: pointer;
+          -webkit-user-select: none; /* Safari 3.1+ */
+          -moz-user-select: none; /* Firefox 2+ */
+          -ms-user-select: none; /* IE 10+ */
+          user-select: none;
+        }
+        
+        .caret::before {
+          content: "\f07b";
+          font-family: FontAwesome;
+          color: #0d6efd;
+          display: inline-block;
+          margin-right: 6px;
+        }
+        
+        .caret-down::before {
+          content: "\f07c";
+          font-family: FontAwesome;  
+          color: #0d6efd;
+          display: inline-block;
+          margin-right: 6px;
+        }
+        
+        .nested {
+          display: none;
+        }
+        
+        .active {
+          display: block;
+        }
+        .treediv a{
+           width: 6rem;
+           text-decoration: none;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          
+        }
+      #menu-h{
+        display: none; 
+        background-color: rgba(0, 0, 0, 0); 
+      }
+      .tes{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: 93.34vh;
+        max-width: none;
+        justify-content: flex-start;
+      }
+      #menu-l{
+        padding: 0px;
+        margin: 0px;
+        width: 12%;
+        
+      }
+      #menu-l ul {
+        
+          padding: 0;
+          margin: 0;
+          height: 93.34vh;
+          background-color: white;
+      }
+
+  
+      #menu-l ul li a {
+          font-family: 'Poppins', sans-serif;;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 18px;
+          line-height: 27px;
+          color:#9C9C9C;
+          padding: 15px;
+          width: 100%;
+          display: inline-block;
+          text-decoration: none;
+          
+          transition: background .4s;
+          background-color: white;
+      }
+      #campopasta:hover{
+        background: rgba(72, 76, 78, 0.24);
+        
+      }
+      #menu-l ul li a:hover {
+        background: rgba(144, 197, 226,0.24 );
+      }
+  
+
+        #menu-h{
+          display: flex;
+
+      }
+      #menu-h #esquerdo {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          width: 12%;
+          height: 65px;
+          background-color: rgb(4, 4, 156);
+          background: rgba(25, 70, 228, 0.79);
+          display: flex;
+          align-items: center;
+      }
+      #menu-h #meio {
+          width:84.25%;
+          height: 65px;
+          background: rgba(25, 70, 228, 0.79);
+          padding: 0;
+          margin: 0px;
+          margin-left: 1px;
+          margin-right: 1px;
+          display: block;
+          align-content: center;
+          
+      }
+      #menu-h #meio li {
+        display: inline;
+    }
+    .selectcor{
+      background-color: rgba(255, 255, 255);
+    }
+      #menu-h #meio li a {
+        display: inline-block;
+        text-decoration: none;
+        padding: 10px;
+        font-family: 'Poppins', sans-serif;;
+          font-style: normal;
+          font-weight: 100;
+          font-size: 12px;
+          line-height: 2px;
+          color: #7083C3;
+          
+
+    }
+    #menu-h #meio li #nome {
+      display: inline-block;
+      text-decoration: none;
+      padding: 25px;
+      font-family: 'Poppins', sans-serif;;
+        font-style: normal;
+        font-weight: 450;
+        font-size: 24px;
+        line-height: 0px;
+        color: #FFF;
+
+  }
+      #menu-h #meio li:last-child a {
+        float:right;
+    }
+      #menu-h #meio li:first-child  {
+        position: absolute;
+        margin: 0;
+        width:500px;
+        left: 45%;
+
+    }
+
+      #menu-h #direito {
+        width: 3.75%;
+        height: 65px;
+        background: rgba(25, 70, 228, 0.79);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+      }
+
+      #menu-h #direito li{
+        display: inline;
+          align-self: center;
+      }
+      svg{
+        transform: translatey(-25%);
+        transform: translatex(0%);
+      }
+      #menu-h #direito li a{
+
+        color: #FFF;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-end;
+        
+        padding: 15px;
+      }
+      #menu-h #direito li a:hover {
+        background: rgba(144, 197, 226, 0.24);
+    }
+      #menu-h #esquerdo li {
+          display: inline;
+          align-self: center;
+      }
+  
+      #menu-h #esquerdo li a {
+          font-family: 'Poppins', sans-serif;
+          font-style: normal;
+          font-weight: 900;
+          font-size: 24px;
+          line-height: 36px;
+          color: #FFF;
+          display: inline-block;
+          text-decoration: none;
+          transition: background .4s;
+
+      }
+      .caixacaminho{
+        width: 87.9%;
+        
+        margin-left: 1px;
+      }
+      .caixacaminho2{
+        width: 100%;
+        margin-left: 0px;
+      }
+
+      .listapasta0{
+        width: 87.9%;
+        display: flex;
+      }
+      .listapasta1{
+        width: 20%;
+        
+        margin: 0px;
+        padding: 0;
+        height: 93.34vh;
+        margin-left: 0.543px;
+    
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-around;
+     
+      }
+      .caminho{
+        height: 100%;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+        padding-left: 10px;
+        padding-top: 5px;
+        text-align: left;
+        margin-bottom: 1px;
+        color: #9C9C9C;
+        background-color: white;
+        width: 100%;
+      }
+.caixabotoes{
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 20px;
+}
+.btncadastrarusuario{
+    background:rgba(25, 70, 228, 0.79) ;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    text-align: center;
+    color: #FFFFFF;
+}
+.statusfalse{
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 4px;
+  margin: 0px;
+  margin-left: 35%;
+  color: white;
+  padding: 5px;
+  width: 100px;
+  background-color: rgb(0, 116, 6);
+}
+.statustrue{
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 4px;
+  margin: 0px;
+  margin-left: 35%;
+  color: white;
+  padding: 5px;
+  width: 100px;
+  background-color: rgb(209, 94, 0);
+}
+      .listausuario0{
+        width: 87.9%;
+        height: 93.34vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+    .listausuario{
+      width: 100%;
+      margin-left: -1px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: bolder;
+      font-size: 14px;
+      line-height: 18px;
+      display:flex;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+    }
+
+    .listausuario table tbody tr{
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 13px;
+      margin-left: 0px;
+    }
+    .listadocumento{
+      width: 100%;
+      margin-left: 1px;
+      text-align: center;
+    }
+    table tbody tr{
+      
+      background-color: rgb(255, 255, 255);     
+    }
+    table thead tr{
+      background-color: rgb(255, 255, 255);
+
+    }
+    table thead tr{
+      border: 1px;
+
+    }
+    td{
+      text-align: center;     /* alinhamento horizontal */
+      vertical-align: middle;
+    }
+    table{
+      width: 90%;
+      margin-left: 0.5px;
+    }
+    table {
+      border-collapse: separate;
+    }
+    table {
+      
+      border-spacing: 0px 1px;
+    }
+    
+    table tbody {
+      border-top: 1px solid #D2E1E1 ;
+      
+    }
+    .btnicone{
+      display: flex;
+      justify-content: center;
+     
+    }
+    .btnicone i{
+      margin: 0px;
+      padding: 0px;
+    }
+    .btnicone2 i{
+      margin: 0px;
+      padding: 0px;
+      margin-left: 8px;
+      font-size: 18px;
+    }
+    .caixainicio{
+      width: 87.9%;
+    }
+  .caixaum{
+    width: 100%;
+    margin: 0px;
+    padding: 0;
+    height: 200px;
+    margin-left: 0.543px;
+
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+ 
+  }
+  .caixadois{
+    width: 100%;
+    margin: 0px;
+    padding: 0;
+    height: 348.9%;
+    margin-left: 0.543px;
+    margin-top: 1.49px;
+    background: #FFFFFF;
+  }
+      
+      .caixaselect{
+        width: 74px;
+        margin-top:8px;
+        padding: 4px;
+        border-color: rgba(41, 59, 123, 0.79);
+        background-color: #1946E4;
+        background: rgba(41, 59, 123, 0.79);
+        border-radius: 0px;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        color: #7083C3;
+      }
+      .btnupload{
+        width: 65%;
+
+        background:rgba(25, 70, 228, 0.79) ;
+        border:rgba(25, 70, 228, 0.79) ;
+        border-radius: 30px;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFFFFF;
+      }
+      .inputpesquisa{
+        width: 1000px;
+        margin-top:8px;
+        padding: 4px;
+        border-color: rgba(41, 59, 123, 0.79);
+        background-color: #1946E4;
+        background: rgba(41, 59, 123, 0.79);
+        border-radius: 0px;
+        color: #7083C3;
+        left:2px;
+      }
+      .inputpesquisa::placeholder{
+        font-family: 'Poppins', sans-serif; 
+        color: #7083C3;
+        text-align:left; 
+      }
+      .btntest{
+      
+        color: #7083C3;
+        font-family: FontAwesome;
+        border-color: rgba(41, 59, 123, 0.79);
+        background-color: #1946E4;
+        background: rgba(41, 59, 123, 0.79);
+        border-radius: 0px;
+        margin-top:8px;
+        margin-left: 3px;
+        width: 33px;
+        padding: 4px;
+        
+ 
+      }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+		body{
+			font-family: 'Poppins', sans-serif; 
+			font-size: 100%;
+      background: #D2E1E1 ;
+			color:black;
+      height: 100vh;
+			
+		}
+    
+    .formlogincabeca{
+        
+        width: 430px;
+        height: 65px;
+        left: 357px;
+        top: 235px;
+
+        background: #1946E4;
+        display: flex;
+        align-items: center;
+        
+        border-radius: 16px 16px 0px 0px;
+    }
+    .formlogininput{
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 19px;
+      line-height: 36px;
+      width: 314px;
+      height: 52px;
+      left: 415px;
+      top: 368px;
+      
+      background: #E2E2E2;
+      padding-left: 42px;
+
+    }
+    .formloginlabel{  
+          width: 266px;
+          height: 42px;
+          left: 463px;
+          top: 373px;
+
+          font-family: Poppins,sans-serif;
+          font-style: normal;
+          font-weight: 300;
+          font-size: 24px;
+          line-height: 36px;
+          display: flex;
+          align-items: center;
+          color: #9C9C9C;
+    }
+    .formlogintexto{
+      font-family: Poppins,sans-serif;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 36px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin-left: 3px;
+      margin-right: 145px;
+      color: #FFFFFF;
+      mix-blend-mode: normal;
+      
+    }
+    
+    .icone{
+      color:white;
+      font-weight: 900;
+      font-size: 24px;
+      padding: 0px;
+      margin-right: 0px;
+      margin-left: 102px;
+      margin-top: -13px;
+    }
+
+    #inputEmail::placeholder {
+      font-family: Poppins,sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 36px;
+      display: flex;
+      align-items: center;
+      color: #9C9C9C;
+      }
+  #inputPassword::placeholder {
+    font-family: Poppins,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+
+    color: #9C9C9C;
+  }
+ 
+  #email-label {
+    position: relative;
+}
+#email-label:before {
+    color: #9C9C9C;
+    content:"\f003";
+    font-family: FontAwesome;
+    position: absolute;
+    font-size: 20px;
+    top: 10px;
+    left: 11px;
+}
+  #password-label {
+    position: relative;
+}
+#password-label:before {
+    color: #9C9C9C;
+    content:"\f023";
+    font-family: FontAwesome;
+    position: absolute;
+    font-size: 20px;
+    top: 11.5px;
+    left: 15px;
+}
+    .formloginbotao{
+      height: 65px;
+      left: 452px;
+      top: 544px;
+      background-color: white;
+      background: #1946E4;
+      border-radius: 30px;
+      font-family: Poppins,sans-serif;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 36px;
+      text-align: center;
+      color: #FFFFFF;
+      mix-blend-mode: normal;
+    }
+    .formlogin{ 
+          width: 430px;
+          height: 423px;
+          background: #FFFFFF;
+          box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.25);
+          border-radius: 16px;
+    }
+    .log{
+      height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+        .alertlogin{
+          position: fixed;
+          top: calc(50% - -150px);
+          left: calc(50% - 250px);
+          width: 400px;
+        }
+
+
+
+
+        /* Google Font Link */
+
+*{
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+}
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 78px;
+  background: #11101D;
+  padding: 6px 14px;
+  z-index: 99;
+  transition: all 0.5s ease;
+}
+.sidebar.open{
+  width: 250px;
+}
+.sidebar .logo-details{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.sidebar .logo-details .icon{
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar .logo-details .logo_name{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .logo_name{
+  opacity: 1;
+}
+.sidebar .logo-details #btn{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: all 0.4s ease;
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details #btn{
+  text-align: right;
+}
+.sidebar i{
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar .nav-list{
+  margin-top: 20px;
+  height: 100%;
+}
+.sidebar li{
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+}
+.sidebar li .tooltip{
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  z-index: 3;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0s;
+}
+.sidebar li:hover .tooltip{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar.open li .tooltip{
+  display: none;
+}
+.sidebar input{
+  font-size: 15px;
+  color: #FFF;
+  font-weight: 400;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  width: 50px;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.5s ease;
+  background: #1d1b31;
+}
+.sidebar.open input{
+  padding: 0 20px 0 50px;
+  width: 100%;
+}
+.sidebar .bx-search{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  background: #1d1b31;
+  color: #FFF;
+}
+.sidebar.open .bx-search:hover{
+  background: #1d1b31;
+  color: #FFF;
+}
+.sidebar .bx-search:hover{
+  background: #FFF;
+  color: #11101d;
+}
+.sidebar li a{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: #11101D;
+}
+.sidebar li a:hover{
+  background: #FFF;
+}
+.sidebar li a .links_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.sidebar.open li a .links_name{
+  opacity: 1;
+  pointer-events: auto;
+}
+.sidebar li a:hover .links_name,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color: #11101D;
+}
+.sidebar li i{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+.sidebar li.profile{
+  position: fixed;
+  height: 60px;
+  width: 78px;
+  left: 0;
+  bottom: -8px;
+  padding: 10px 14px;
+  background: #1d1b31;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+.sidebar.open li.profile{
+  width: 250px;
+}
+.sidebar li .profile-details{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.sidebar li img{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+.sidebar li.profile .name,
+.sidebar li.profile .job{
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  white-space: nowrap;
+}
+.sidebar li.profile .job{
+  font-size: 12px;
+}
+.sidebar .profile #log_out{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #1d1b31;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 0px;
+  transition: all 0.5s ease;
+}
+.sidebar.open .profile #log_out{
+  width: 50px;
+  background: none;
+}
+.home-section{
+  position: relative;
+  background: #E4E9F7;
+  min-height: 100vh;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+.sidebar.open ~ .home-section{
+  left: 250px;
+  width: calc(100% - 250px);
+}
+.home-section .text{
+  display: inline-block;
+  color: #11101d;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px
+}
+@media (max-width: 420px) {
+  .sidebar li .tooltip{
+    display: none;
+  }
+}
+
+        
