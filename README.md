@@ -3,6 +3,6 @@
 ## Feito usando
 
 <img src="https://user-images.githubusercontent.com/78568759/185504679-94a9cd91-97cc-4a7e-bc5e-d4a94de52047.png" width='120px' >
-<img src="https://user-images.githubusercontent.com/78568759/185504529-558e93f7-50a8-45be-bbfb-f2301f15380d.png"  >
-<img src="https://user-images.githubusercontent.com/78568759/185504517-3d21ed41-a281-44fb-a97b-ba4c3da1fa87.png">
+<img src="https://user-images.githubusercontent.com/78568759/185504529-558e93f7-50a8-45be-bbfb-f2301f15380d.png"  width='120px'>
+<img src="https://user-images.githubusercontent.com/78568759/185504517-3d21ed41-a281-44fb-a97b-ba4c3da1fa87.png" width='120px'>
 
