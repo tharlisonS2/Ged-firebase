@@ -5,6 +5,10 @@
 <div class="d-flex alt ">
   <nav class="nav flex-column w-25 p-2 bg-dark navl">
     <a class="nav-link active text-secondary caminho-nav" aria-current="page" href="/inicio"><i class="fas fa-home nav-link text-secondary"></i> Inicio</a>
+    @if(Session::get('admin')==true)
+    <a class="nav-link active text-secondary caminho-nav" aria-current="page" href="/usuarios"><i class="fas fa-users-cog nav-link text-secondary"></i> Usuários</a>
+    @else
+    @endif
     <a class="nav-link text-secondary caminho-nav-select" href="/documento"><i class="far fa-file nav-link text-secondary"></i> Documentos</a></li>
     <a class="nav-link text-secondary caminho-nav" href="/busca"><i class="fas fa-search nav-link text-secondary"></i> Buscar</a></li>
 
@@ -237,80 +241,10 @@
         </nav>
       </div>
     </div>
-    <table class="table responsive  table-dark table-borderless  table-hover  wid m-2 rounded shadow-lg" id="table">
-      <colgroup>
-        <col width="20">
-        <col width="20">
-        <col width="20">
-        <col width="20">
-        <col width="20">
-        <col width="0">
-      </colgroup>
-      <thead>
-      <tr class="text-center">
-          <th>ID</th>
-          <th>NOME</th>
-          <th>TIPO</th>
-          <th>TAMANHO</th>
-          <th>USUARIO</th>
-          <th>AÇOES</th>
-
-        </tr>
-      </thead>
-      <tbody class="text-center">
-        @if(isset($files))
-        @foreach($files as $object)
-        @if($object->info()['contentType']=='application/x-www-form-urlencoded;charset=UTF-8'||$object->info()["size"]<=0) @else <tr>
-
-          <td>#{{$object->info()['generation']}}</td>
-          <td>
-            @if($object->info()['contentType']=="application/pdf")
-            <i class="fa-solid fa-file-pdf text-danger me-1"></i>@elseif($object->info()['contentType']=="image/png")<i class="fa-solid fa-file-image text-info me-1"></i>
-            @else<i class="fa-solid fa-file-lines text-secondary me-1"></i>@endif{{substr($object->name(), strpos($object->name(), '/'))}}
-
-          </td>
-          <td>{{$object->info()['contentType']}}</td>
-          <td>{{number_format($object->info()['size']/1024,1)}} KBytes</td>
-          <td>@if(isset($object->info()['metadata']['author']))
-            {{$object->info()['metadata']['author']}}
-            @else
-            Nenhum
-            @endif
-          </td>
-     
-          <td class="text-center">
-            <div class="d-flex justify-content-center">
-              <div class="btn-group p-0 m-0">
-                <form action="/documento/{{$object->info()['generation']}}" method="POST" name="delete">
-                  @csrf
-                  <input type="hidden" name="_method" value="DELETE" />
-                  <button type='submit' id="deletar" class="bg-dark border-0 p-0 acao-icon" onclick="return confirm('Deseja deletar o arquivo?')">
-                    <i for="deletar" class="far fa-trash-alt text-danger" style="font-size:20px;"></i></button>
-                </form>
-              </div>
-              <div class="btn-group p-0 mx-3 ">
-
-                <form action="/visualizar/{{$object->info()['generation']}}" method="POST" name="visualizar">
-                  @csrf
-                  <button type='submit' class="bg-dark border-0 p-0" id="visualizar" data-toggle="" data-target="#">
-                    <i for="visualizar" class="text-center fas fa-eye text-info" style="font-size:20px;"></i></button>
-                </form>
-              </div>
-              <div class="btn-group p-0 m-0">
-                <form action="/download/{{$object->info()['generation']}}" method="POST" name="download">
-                  @csrf
-                  <button type='submit' class="bg-dark border-0 p-0 acao-icon" id="download" onclick="return confirm('Deseja Fazer download do arquivo?')">
-                    <i for="download" class="fas fa-cloud-download-alt  text-primary" style="font-size:20px;"></i></button>
-
-
-                </form>
-              </div>
-            </div>
-          </td>
-          @endif
-          @endforeach
-          @endif
-      </tbody>
+    <div class="d-flex h-75 w-100 bg-secondary">
+    <embed src="{{$url}}" width="100%" height="100%" type='application/pdf'>
+    
+    </div>
   </div>
 </div>
 

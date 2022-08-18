@@ -1,173 +1,78 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Kreait\Firebase\Auth\UserMetaData;
 use Kreait\Firebase\Contract\Auth;
 use Kreait\Firebase\Contract\Storage;
+use Illuminate\Support\Facades\Session;
+use App\Models\Usuario;
 
 class AuthController extends Controller
 {
-    protected $auth, $database, $storage;
-    public function __construct(Auth $auth,Storage $storage)
+    public function __construct(Auth $auth, Storage $storage)
     {
         $this->auth = $auth;
         $this->storage = $storage;
         $this->storageClient = $storage->getStorageClient();
         $this->defaultBucket = $storage->getBucket();
-
     }
 
-    public function show(){
-        $object = $this->defaultBucket->objects();
-        $departamentos=[];
-        foreach ($object as $obj) {
-            if (isset($obj->info()['metadata']['departamento'])&&isset($obj->info()['metadata']['Raizdepartamento'])){
-                if (in_array($obj->name(), $departamentos)==false){
-                        $departamentos[]=$obj->name();
-                }
-
-            }
-        }
-        $users=$this->auth->listUsers($defaultMaxResults = 1000, $defaultBatchSize = 1000);
-        return view('admin.u2',[
-            'users'=>$users,
-            'departamentos'=>$departamentos
+    public function show()
+    {
+        $usuario = new Usuario($this->auth, $this->storage);
+        $vars[] = $usuario->mostrar();
+        return view('admin.u2', [
+            'users' => $vars[0]['users'],
+            'departamentos' =>  $vars[0]['departamentos']
         ]);
     }
     public function store(Request $request)
     {
-        $nome=$request->nome;
-        $email = $request->email;
-        $pass = $request->senha;
-        $departamento=$request->get("departamento");
-        $departamento= substr($departamento, 0, -1);
-        $object = $this->defaultBucket->objects();
-        $departamentos=[];
-        foreach ($object as $obj) {
-            if (isset($obj->info()['metadata']['departamento'])&&isset($obj->info()['metadata']['Raizdepartamento'])){
-                if (in_array($obj->name(), $departamentos)==false){
-                        $departamentos[]=$obj->name();
-                }
+        $usuario = new Usuario($this->auth, $this->storage);
 
-            }
-        }
-        try {
-            $newUser = $this->auth->createUserWithEmailAndPassword($email, $pass);
-            $this->auth->updateUser($newUser->uid,[
-                'displayName'=>$nome,
-                'photoURL' => 'imagemperfil/default.png'  
-             ]); 
-
-            if($request->role=='Administrador')
-                $this->auth->setCustomUserClaims( $newUser->uid, [
-                    'admin' => true,
-                    'departamento' => $departamento]);
-            else{
-                $this->auth->setCustomUserClaims( $newUser->uid, [
-                    'admin' => false,
-                    'departamento' => $departamento
-                ]);
-         }
-           
-            //$this->auth->updateUser($newUser->uid,[
-             //       'cargo'=>'usuario'  
-           // ]);        
-                          //  $this->auth->setCustomUserClaims( $signInResult->firebaseUserId(), ['admin' => true]);
-               // $user = $this->auth->getUser($signInResult->firebaseUserId());
-
-            $users=$this->auth->listUsers();
-            return view('admin.usuarios',[
-                'users'=>$users,
-                'departamentos'=>$departamentos
-            ]);
-        } catch (\Throwable $e) {
-            switch ($e->getMessage()) {
-                case 'The email address is already in use by another account.':
-                    return redirect('/usuarios')->with('status','Email ja registrado!');
-                    break;
-                case 'A password must be a string with at least 6 characters.':
-                    return redirect('/usuarios')->with('status','Senha deve conter ao menos 6 caracteres!');
-                    break;
-                default:
-                    dd($e->getMessage());
-                    break;
-            }
+        if ($usuario->cadastrar($request) == "caso1") {
+            return redirect('/usuarios')->with('status', 'Este email ja está em uso!');
+        } elseif ($usuario->cadastrar($request) == "caso2") {
+            return redirect('/usuarios')->with('status', 'A senha deve ter no minimo 6 caracteres!');
+        } elseif ($usuario->cadastrar($request)) {
+            return redirect('/usuarios')->with('status', 'Cadastro processado!');
         }
     }
     public function login(Request $request)
     {
-        if(Session::has('firebaseUserId')){
+        if (Session::has('firebaseUserId')) {
             return redirect('inicio');
-        }else if($request->email!=null){
-
-            $email = $request->email;
-            $pass = $request->senha;
-           
-            try {
-                $signInResult = $this->auth->signInWithEmailAndPassword($email, $pass);
-                // dump($signInResult->data());
-
-                Session::put('firebaseUserId', $signInResult->firebaseUserId());
-                Session::put('idToken', $signInResult->idToken());
-                Session::put('username',$signInResult->data()["displayName"]);
-                $id=$this->auth->getUser($signInResult->firebaseUserId());
-                Session::put('departamento',$id->customClaims['departamento']);
-                Session::put('admin',$id->customClaims['admin']);
-                $bucket = $this->defaultBucket;
-                $object = $bucket->object($id->photoUrl);
-                $url = $object->signedUrl(
-                    new \DateTime('1 hour'),
-                    [
-                        'version' => 'v4',
-                    ]
-                );
-                Session::put('photoUrl',$url);
-                Session::save();
-              //  $this->auth->setCustomUserClaims( $signInResult->firebaseUserId(), ['admin' => true]);
-               // $user = $this->auth->getUser($signInResult->firebaseUserId());
-
-                return redirect('/inicio');
-            } catch (\Throwable $e) {
-                switch ($e->getMessage()) {
-                    case 'INVALID_PASSWORD':
-                        return redirect('/login')->with('status','Senha Invalida!');
-                        break;
-                    case 'EMAIL_NOT_FOUND':
-                        return redirect('/login')->with('status','Email Inexistente!');
-                        break;
-                    default:
-                        return $e->getMessage();
-                        break;
-                }
+        } else {
+            $usuario = new Usuario($this->auth, $this->storage);
+            if ($usuario->logar($request) == "caso1") {
+                return redirect('/login')->with('status', 'Senha Invalida!');
+            } elseif ($usuario->logar($request) == "caso2") {
+                return redirect('/login')->with('status', 'Esse email não existe!');
+            } elseif ($usuario->logar($request)) {
+                return redirect('/inicio')->with('status', 'Sucesso');
             }
+            return view("login");
         }
-        return view("login");
     }
     public function logout()
     {
-        if (Session::has('firebaseUserId') && Session::has('idToken')) {
-            // dd("User masih login.");
-            $this->auth->revokeRefreshTokens(Session::get('firebaseUserId'));
-            Session::forget('firebaseUserId');
-            Session::forget('idToken');
-            Session::forget('username');
-            Session::forget('departamento');
-            Session::forget('admin');
-            Session::forget('photoUrl');
-            Session::save();
-            return view("login");
-        } else {
-            dd("User belum login.");
-        }
+        $usuario = new Usuario($this->auth, $this->storage);
+        $usuario->fazerlogout();
+        return view("login");
     }
-
     public function update(Request $request, $id)
     {
-        //
     }
+    public function edit(Request $request, $uid)
+    {
+        $usuario = new Usuario($this->auth, $this->storage);
+        if($usuario->editar($request, $uid)){
+            return redirect('/usuarios')->with('status', 'Senha deve conter 6 caracteres!');
 
+        }
+        return redirect('/usuarios')->with('status', 'Usuário atualizado!');
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -176,13 +81,12 @@ class AuthController extends Controller
      */
     public function destroy($uid)
     {
-     
-        $idantigo = $this->auth->getUser($uid);
-        if($idantigo->uid!=$uid){
-            return redirect('usuarios')->with('status','Ação invalida');
-        }else{
-            $this->auth->deleteUser($uid);
-            return redirect('/usuarios');
+        $usuario = new Usuario($this->auth, $this->storage);
+        $escolha = $usuario->deletar($uid);
+        if ($escolha == '1') {
+            return redirect('usuarios')->with('status', 'Ação invalida');
+        } elseif ($escolha == '2') {
+            return redirect('/usuarios')->with('status', 'Usuário deletado');;
         }
     }
 }
